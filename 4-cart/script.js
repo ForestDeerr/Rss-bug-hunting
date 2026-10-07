@@ -87,6 +87,7 @@ function clearCart() {
 function renderCart() {
   cartItemsEl.innerHTML = "";
   let total = 0;
+  let totalItems = 0;
   cart.forEach((item) => {
     const lineTotal = item.price * item.qty;
     const li = document.createElement("li");
@@ -107,6 +108,7 @@ function renderCart() {
       removeItem(item.id),
     );
     cartItemsEl.appendChild(li);
+    totalItems += item.qty;
     total += item.price * item.qty;
   });
 
@@ -114,7 +116,7 @@ function renderCart() {
     total = total - total * discount;
   }
 
-  badgeEl.textContent = cart.length;
+  badgeEl.textContent = totalItems;
   totalEl.textContent = total;
   emptyMsg.hidden = true;
 }
