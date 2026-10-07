@@ -53,12 +53,17 @@ function render() {
   countEl.textContent = items.length;
 }
 
+function resetFilters() {
+  searchInput.value = "";
+  categorySelect.value = "all";
+  sortSelect.value = "default";
+
+  render();
+}
+
 searchInput.addEventListener("input", render);
 categorySelect.addEventListener("change", render);
 sortSelect.addEventListener("change", render);
-
-resetBtn.addEventListener("click", () => {
-  searchInput.value = "";
-});
+resetBtn.addEventListener("click", resetFilters);
 
 render();
